@@ -1,0 +1,85 @@
+==>useEffect- If we don't pass second parameter. it will be called everytime when props or state changes
+
+
+==>Never create a component inside the other component
+
+==>Never ever write a useState inside the if statements(Condition), for loop.
+
+==>useState is a hook,so we can create local variables inside the components
+
+==>formik libray for forms in react
+
+==> React Router dom 6.4
+npm install react-router-dom
+-- Create Router Configuration
+   - import {createBrowserRouter, RouterProvider, Outlet} from 'react-router-dom'
+   
+   -createBrowserRouter
+   const appRouter =             createBrowserRouter([
+     {
+	   path:'/',
+	   element:<AppLayout/>,
+	   errorElement:<Error/>,
+	 },
+	 {
+	   path:'/about',
+	   element:<About/>
+	 }
+   ])
+   
+   -import RouterProvider
+   root.render(<RouterProvider router={appRouter});
+   
+   - import {useRouteError} from 'react-router-dom' inside Error component.
+   
+   - const err = useRoutError();
+   const {status, statusText} = err;
+   
+   - Single Page Application: 
+   - Two types of Routing
+     = Client Side
+	   1. import {Link} from 'react-router-dom'
+	   2. <li><Link to="/about">About</Link></li>
+	 = Server Side
+	 3. Link - uses <a> tag behind the scene.
+   - Nested Routing
+    const appRouter =             createBrowserRouter([
+     {
+	   path:'/',
+	   element:<AppLayout/>,
+	   errorElement:<Error/>,
+	   childeren:[
+	      {
+		   path:'/',
+		   element:<Boday/>
+		   },
+		   {
+		   path:'/about',
+		   element:<About/>
+		   },
+		   {
+		   path:'/contact',
+		   element:<Contact/>
+		   }
+		   {
+		   path:'/restaurent/:resid',
+		   element:<RestaurentMenu/>
+		   }
+	   ]
+	 },
+	 
+    ])
+	
+   -Dynamic Routing
+      = Create RestaurentMenu.js
+      const RestaurentMenu = ()=>{
+	     const params = useParams()
+		 const { resid } = params;
+	     return (
+		    <div>
+			    <h1>Restaurent id: {resid}</h1>
+			</div>
+		 );
+	  } 
+   
+   - modular,reusable, maintainable,readable,testable
