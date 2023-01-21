@@ -2,6 +2,7 @@ import RestaurentCard from "../components/RestaurentCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API_URL } from "../constants";
+import { Link } from "react-router-dom";
 
 function filterData(searchText, allRestaurants) {
   let filteredData = allRestaurants?.filter((restaurant) =>
@@ -48,7 +49,7 @@ const Body = () => {
         <button
           className="search-btn"
           onClick={() => {
-            const data = filterData(searchText,allRestaurants);
+            const data = filterData(searchText, allRestaurants);
             setfilteredRestaurants(data);
           }}
         >
@@ -56,15 +57,20 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurentlist">
-        {
-        filteredRestaurants?.length===0 
-        ? <h1>No Restraunt match your Filter!!</h1> 
-        : filteredRestaurants?.map((restaurent) => {
-          return (
-            <RestaurentCard {...restaurent.data} key={restaurent.data.id} />
-          );
-        })
-        }
+        {filteredRestaurants?.length === 0 ? (
+          <h1>No Restraunt match your Filter!!</h1>
+        ) : (
+          filteredRestaurants?.map((restaurent) => {
+            return (
+              <Link
+                to={"/restaurant/" + restaurent.data.id}
+                key={restaurent.data.id}
+              >
+                <RestaurentCard {...restaurent.data} key={restaurent.data.id} />
+              </Link>
+            );
+          })
+        )}
       </div>
     </div>
   );
