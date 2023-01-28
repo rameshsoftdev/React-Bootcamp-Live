@@ -64,7 +64,7 @@
 
  ```
  
-## Chinking/Code Splitting/Dynamic Bundling/Lazy Loading/Dynamic import
+## Chunking/Code Splitting/Dynamic Bundling/Lazy Loading/Dynamic import
  - import {lazy, Suspense} from 'react';
  - const Instamart = lazy(()=> import("./compoenents/Instamart"));
  - React tries to suspend on demand loading -> upon render
@@ -77,4 +77,4 @@
        </Suspense>
    }
   ```
- - Never do lazy loading in components because the components get loaded on every changes in props in state, so lazy loading happens on every render which is performance issue. So always lazy loads at the top of the file just below the import statments.
+ - Never do lazy loading in components because the components get loaded on every changes in props and state, so lazy loading happens on every render which is performance issue. So always lazy loads at the top of the file just below the import statments.
