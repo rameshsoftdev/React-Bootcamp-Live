@@ -1,15 +1,17 @@
 import RestaurentCard from "../components/RestaurentCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API_URL } from "../constants";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
+import UserContext from "../utils/UserContext";
 
 const Body = ({user}) => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setfilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const {userinfo,onUserNameChange} = useContext(UserContext);
 
   async function getRestaurents() {
     let data = await fetch(SWIGGY_API_URL);
@@ -84,6 +86,9 @@ const Body = ({user}) => {
             Search
           </button>
         </div>
+      </form>
+      <form>
+          <input type="text" value={userinfo.username} onChange={(e)=>onUserNameChange(e.target.value)}/>
       </form>
       </div>
       <div className="flex flex-wrap bg-cyan-500">

@@ -1,57 +1,59 @@
 # Data is the new oil
 
- - Props drilling
-    ```
-    AppLayout
-      (state=user)
-        - <Body user={user}>
-          - <RestaurantCard>
-    ```
+- Props drilling
 
-    { isVisible && <p>show desc</p>}
+  ```
+  AppLayout
+    (state=user)
+      - <Body user={user}>
+        - <RestaurantCard>
+  ```
 
-    Lifting the state up
-     - Parent control the states of it's child componnts
+  { isVisible && <p>show desc</p>}
 
-     React Dev tools
+  Lifting the state up
 
-     ## React context
-     ```
-     import {createContext} from 'react;
-     const UserContext = createContext({
-        name:'Ramesh',
-        email:'codewithramesh@gmai.com'
-     })
+  - Parent control the states of it's child componnts
 
-     UserContext.displayName="UserContext";
-     export default UserContext;
-     ```
+  React Dev tools
 
-     --> Using context
-     - In header
-      import {useContext} from 'react';
+  ## React context
+
+  ```
+  import {createContext} from 'react;
+  const UserContext = createContext({
+     name:'Ramesh',
+     email:'codewithramesh@gmai.com'
+  })
+
+  UserContext.displayName="UserContext";
+  export default UserContext;
+  ```
+
+  --> Using context
+
+  - In header
+    import {useContext} from 'react';
+    import UserContext from '../utils/UserContext'
+
+  const {user} = useContext(UserContext)
+
+  --> Using context in class components
+
       import UserContext from '../utils/UserContext'
 
-      const {user} = useContext(UserContext)
+      <UserContext.Consumer>
+      {
 
+      }
+      </UserContext.Consumer>
 
-      --> Using context in class components
+<UserContext.Provider value={
+()=>{
+user:user
+}
+}>
+{
 
-       import UserContext from '../utils/UserContext'
-
-       <UserContext.Consumer>
-       {
-        
-       }
-       </UserContext.Consumer>
-
-
-  <UserContext.Provider value={
-    ()=>{
-        user:user
-    }
-  }>
-       {
-        
        }
        </UserContext.Provider>
