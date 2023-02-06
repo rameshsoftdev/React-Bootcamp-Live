@@ -91,7 +91,7 @@ const Body = ({user}) => {
           <input type="text" value={userinfo.username} onChange={(e)=>onUserNameChange(e.target.value)}/>
       </form>
       </div>
-      <div className="flex flex-wrap bg-cyan-500">
+      <div className="flex flex-wrap bg-white">
         {filteredRestaurants?.length === 0 ? (
           <h1>No Restraunt match your Filter!!</h1>
         ) : (

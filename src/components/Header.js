@@ -3,14 +3,17 @@ import { useState } from 'react';
 import Logo from '../../images/foodadda.png';
 import { Link } from 'react-router-dom';
 import useOnline from "../utils/useOnline";
+import { useSelector } from "react-redux";
 const NavBar = () => {
+  const cartItems = useSelector((store)=>store.cart.items);
+  console.log(cartItems);
   return (
     <div className="nav-items">
       <ul className="flex">
         <li className="p-2 m-2 bg-white rounded-md w-24 text-center hover:bg-gray-200"><Link to="/">Home</Link></li>
         <li className="p-2 m-2 bg-white rounded-md w-24 text-center hover:bg-gray-200"><Link to="/about">About Us</Link></li>
         <li className="p-2 m-2 bg-white rounded-md w-24 text-center hover:bg-gray-200"><Link to="/contact">Contact</Link></li>
-        <li className="p-2 m-2 bg-white rounded-md w-24 text-center hover:bg-gray-200">Cart</li>
+        <li className="p-2 m-2 bg-white rounded-md w-24 text-center hover:bg-gray-200"><Link to="/cart">Cart - {cartItems.length}</Link></li>
         <li className="p-2 m-2 bg-white rounded-md w-24 text-center hover:bg-gray-200"><Link to="/instamart">Instamart</Link></li>
       </ul>
     </div>

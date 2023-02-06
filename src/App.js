@@ -11,11 +11,15 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import store from './utils/store';
+import { Provider } from "react-redux";
+import Cart from "./components/Cart";
 
 const Instamart = lazy(() => import("./components/Instamart"));
 const AppLayout = () => {
   const [username, setUsername] = useState("Ramesh");
   return (
+    <Provider store={store}>
     <UserContext.Provider value={
       {
         userinfo: {
@@ -29,6 +33,7 @@ const AppLayout = () => {
       <Outlet />
       <Footer />
     </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -61,6 +66,10 @@ const AppRouter = createBrowserRouter([
       {
         path: "/restaurant/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+       path:"/cart",
+       element:<Cart/>
       },
       {
         path: "/instamart",

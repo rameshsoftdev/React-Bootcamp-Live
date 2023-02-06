@@ -4,7 +4,7 @@ import UserContext from "../utils/UserContext";
 const RestaurentCard = ({ name, cloudinaryImageId, cuisines, avgRating }) => {
   const {userinfo} = useContext(UserContext);
   return (
-    <div className="card w-56 p-2 m-2 ml-2 hover:shadow-2xl hover:bg-gray-200 hover:bottom-1 min-h-[270px] bg-white">
+    <div className="card w-56 p-2 m-2 ml-2 hover:shadow-2xl hover:bg-cyan-900 hover:bottom-1 min-h-[270px] bg-cyan-500 shadow-lg">
       <img className="card-image" src={IMG_CDN_URL + cloudinaryImageId} />
       <h4 className="card-name text-xl font-bold">{name}</h4>
       <h4 className="cuisines text-sm">{cuisines.join(", ")}</h4>
